@@ -78,6 +78,7 @@ class MenuController
   def read_csv
   end
 
+
   def entry_submenu(entry)
     puts "n - next entry"
     puts "d - delete entry"
@@ -99,5 +100,5 @@ class MenuController
         entry_submenu(entry)
       end
     end
-  
+
 end
