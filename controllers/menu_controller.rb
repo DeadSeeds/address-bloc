@@ -13,7 +13,8 @@ class MenuController
     puts "2 - Create an entry"
     puts "3 - Search for an entry"
     puts "4 - Import entries from a CSV"
-    puts "5 - Exit"
+    puts "5 - Delete all entries"
+    puts "6 - Exit"
     print "Enter your selection: "
 
     selection = gets.to_i
@@ -36,6 +37,9 @@ class MenuController
         read_csv
         main_menu
       when 5
+        puts "Nuking..."
+        nuke_entries
+      when 6
         puts "Goodbye!"
         exit(0)
       else
@@ -94,7 +98,6 @@ class MenuController
     name = gets.chomp
     match = address_book.binary_search(name)
     system "clear"
-
     if match
       puts match.to_s
       search_submenu(match)
@@ -125,6 +128,12 @@ class MenuController
       puts "#{file_name} is not a valid CSV file, please enter the name of a valid CSV file"
       read_csv
     end
+  end
+
+
+  def nuke_entries
+    address_book.entries.clear
+    main_menu
   end
 
 
